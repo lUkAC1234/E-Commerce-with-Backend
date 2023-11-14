@@ -1,0 +1,186 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+    <br><br><br>
+
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+
+    <div class="side-bar">
+
+        <header>
+
+            <div class="close-btn">
+
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="{% url 'main' %}">
+                <img src="{% static 'main/images/logo.svg' %}"
+                     class="logo-image"
+                     alt="">
+            </a>
+        </header>
+        <div class="menu">
+            <div class="item"><a href="#"><i class="fas fa-desktop"></i>Dashboard</a></div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa fa-sort"></i>Size<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    {% for size in sizes %}
+                        <a href="#" onclick="addParam('size_q', {{ size.id }})" class="sub-item">{{ size.size }}
+                            ({{ size.fSizes.count }})</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa fa-table"></i>Colors<i
+                        class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    {% for color in colors %}
+                        <div class="color" style="cursor: auto">
+                            <a href="#" onclick="addParam('color_q', {{ color.id }})" style="padding-left: 10px">
+                                <div class="color-item"
+                                     style="background-color: {{ color.name }}; width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 5px 10px rgb(0 0 0 / 20%);">
+                                </div>
+                            </a>
+                            <i class="fa fa-paint-brush"><span>({{ color.fColors.count }})</span></i>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fas fa-tags"></i>Tags<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    {% for tag in tags %}
+                        <a href="#" onclick="addParam('tag', {{ tag.id }})" class="sub-item"><i
+                                class="fa fa-hashtag"></i>{{ tag.name|capfirst }} ({{ tag.fTags.count }})</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa fa-th"></i>Categories<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    {% for category in categories %}
+                        <a href="#" onclick="addParam('category', {{ category.id }})"
+                           class="sub-item">{{ category.name|capfirst }} ({{ category.products.count }})</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa fa-money"></i>Price<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu" style="margin-right: 16px">
+                    <input type="text" class="js-range-slider" name="my_range" value=""/>
+                </div>
+            </div>
+            {% if request.user.is_authenticated %}
+                {% cart_info request as cart %}
+                <div class="item"><a href="{% url 'wish_list' %}"><i class="fa fa-heart" aria-hidden="true"></i>Wish
+                    List</a></div>
+                <div class="item"><a href="{% url 'ShoppingCartView' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart List ({{ cart.0 }})</a></div>
+            {% endif %}
+            <br><br><br>
+        </div>
+    </div>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="order-single-title">
+                <div class="page_way">
+                    {% if tag %}
+                        <h1 class="page_way_title"><i class="fa fa-hashtag"
+                                                      aria-hidden="true"></i>{{ tag.name|capfirst }}</h1>
+                    {% else %}
+                        <h1 class="page_way_title">Order Furniture</h1>
+                    {% endif %}
+                    <h4 class="page_way_info">Home / Order Furniture</h4>
+                </div>
+            </div>
+            <div class="search-container">
+                <form action="" class="search-bar" method="get">
+                    <input type="search" name="search" value="{{ request.GET.search }}"
+                           placeholder="Search by name or category">
+                    <button class="search-btn" type="submit">
+                        <span>Search</span>
+                    </button>
+                </form>
+            </div>
+            <div class="order-single">
+                {% for object in object_list %}
+                    <div class="item">
+                        <div class="order-menu-container">
+                            <a href="{% url 'detail' pk=object.pk %}" style='color: var(--primary1);'><img
+                                    src="{{ object.image.url }}" alt="" class="order-menu"></a>
+                        </div>
+                        <h2 class="title"><a href="{% url 'detail' pk=object.pk %}"
+                                             style='color: var(--primary1);'>{{ object.title }}</a></h2>
+                        <p class="price">Category: <strong>{{ object.categories }}</strong></p>
+                        {% if object.real_price != object.price %}
+                            <p class="price">Price: <strong>
+                                <del style="color: var(--primary1);">${{ object.price }}</del>
+                                ${{ object.real_price }}</strong></p>
+                        {% else %}
+                            <p class="price">Price: <strong>{{ object.real_price }}$</strong></p>
+                        {% endif %}
+                        <div class="item wishlits">
+                            {% if request.user.is_authenticated %}
+                                {% is_wishlist request object.id as obj %}
+                                {% if obj %}
+                                    <a href="{% url 'wishlist' id=object.id %}?path={{ request.path }}"><i
+                                            class="fa fa-heart" aria-hidden="true" style="color: #dc3545"></i> Remove
+                                        from favorites</a>
+                                {% else %}
+                                    <a href="{% url 'wishlist' id=object.id %}?path={{ request.path }}"><i
+                                            class="fa fa-heart" aria-hidden="true"></i> Add to favorites</a>
+                                {% endif %}
+                                {% is_cart request object.id as value %}
+                                {% if value %}
+                                    <a class="cart-icon" href="{% url 'add_cart' id=object.id %}?next={{ request.path }}">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true" style="color: var(--primary1)"></i>
+                                        Remove from Cart
+                                    </a>
+                                {% else %}
+                                    <a class="cart-icon" href="{% url 'add_cart' id=object.id %}?next={{ request.path }}">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        Add to Cart
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{% url 'signin' %}"><i class="fa fa-heart" aria-hidden="true"></i> Add to
+                                    favorites</a>
+                                <a href="{% url 'signin' %}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to
+                                    Cart</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block js_block %}
+    <script>
+        $(".js-range-slider").ionRangeSlider({
+            type: "double",
+            min: {{ min }},
+            max: {{ max }},
+            from: {{ min }} * 2,
+            to: {{ max }} / 2,
+            prefix: "$",
+            onFinish: function (data) {
+                addParam('price', data.from.toString() + ";" + data.to.toString())
+            }
+        });
+
+        function addParam(name, value) {
+            var param = new URLSearchParams(window.location.search)
+            if (param.has(name) && param.get(name) == value) {
+                param.delete(name)
+            } else {
+                param.set(name, value)
+            }
+            window.location.search = param.toString()
+        }
+    </script>
+{% endblock %}

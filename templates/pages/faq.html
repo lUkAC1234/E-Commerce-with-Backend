@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main-faq">
+        <div class="main__wrapper">
+            <div class="faq-title">
+                <div class="page_way">
+                    <h1 class="page_way_title">FAQ</h1>
+                    <h4 class="page_way_info">Home / FAQ</h4>
+                </div>
+            </div>
+            <div class="container-faq">
+                <br><br><br>
+                <div class="faq-card-user-container">
+                    {% if request.user.is_staff %}
+                        <details class="faq-card user">
+                            <a href="{% url 'faqCreateView' %}">
+                                <summary>Add question <span class="faq-open-icon">+</span>
+                            </a>
+                        </details>
+                    {% endif %}
+                </div>
+                <h2 class="title_faq">Frequently asked questions</h2>
+                {% for faq in object_list %}
+                    <details class="faq-card">
+                        <summary>{{ faq.question }}
+                            {% if request.user.is_staff %}
+                                <a href="{% url 'faqDeleteView' pk=faq.pk %}" class="faq-open-delete"><i
+                                        class="fa fa-trash"></i></a>
+                                <a href="{% url 'faqUpdateView' pk=faq.pk %}" class="faq-open-update"><i
+                                        class="fa fa-pen"></i></a>
+                                <span class="faq-open-created-at">{{ faq.created_at|date:'d F Y' }}</span>
+                            {% endif %}
+                            <span class="faq-open-icon">+</span>
+                        </summary>
+                        <span class="faq-card-spoiler">{{ faq.answer }}</span>
+                    </details>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

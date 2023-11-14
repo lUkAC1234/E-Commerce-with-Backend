@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+        <br><br><br>
+        <main class="main">
+            <div class="main__wrapper">
+                <div class="contact-title">
+                    <div class="page_way">
+                        <h1 class="page_way_title">FAQ Create</h1>
+                        <h4 class="page_way_info">Home / FAQ Create</h4>
+                    </div>
+                </div>
+                <div class="contact__wrapper">
+                    <div class="container">
+                        <div class="content">
+                            <div class="right-side">
+                                <div class="topic-text">Create</div>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-box">
+                                        <input type="text" name="question" placeholder="Add question...">
+                                        {% if form.question.errors %}
+                                            <h6 class="input-error" for="">{{ form.question.errors }}</h6>
+                                        {% endif %}
+                                    </div>
+                                    {% if form.question.errors %} <br> {% endif %}
+                                    <div class="input-box message-box">
+                                        <textarea type="text" name="answer" placeholder="Add answer..."></textarea>
+                                        {% if form.answer.errors %}
+                                            <h6 class="input-error" for="">{{ form.answer.errors }}</h6>
+                                        {% endif %}
+                                    </div>
+                                    {% if form.answer.errors %} <br> {% endif %}
+                                    <div class="button">
+                                        <button type="submit">Create</button>
+                                        <button>
+                                            <a href="{% url 'faq' %}">GO BACK</a>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    {% else %}
+        {% include 'layouts/faqError.html' %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+        <br><br><br>
+        <main class="main">
+            <div class="main__wrapper">
+                <div class="contact-title">
+                    <div class="page_way">
+                        <h1 class="page_way_title">FAQ Delete</h1>
+                        <h4 class="page_way_info">Home / FAQ Delete</h4>
+                    </div>
+                </div>
+                <div class="contact__wrapper">
+                    <div class="container-user">
+                        <div class="user-container">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="user-text-container">
+                                    <div class="user-text-column">
+                                        <h1 class="user-text">Question: </h1>
+                                        <span>{{ object.question }}</span>
+                                        <h1 class="user-text">Answer: </h1>
+                                        <span>{{ object.answer }}</span>
+                                    </div>
+                                    <div class="user-text-column">
+                                        <a href="{% url 'faq' %}" class="contact-a">NO</a>
+                                        <button type="submit">YES</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    {% else %}
+        {% include 'layouts/faqError.html' %}
+    {% endif %}
+{% endblock %}

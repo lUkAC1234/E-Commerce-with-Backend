@@ -1,0 +1,245 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'main/styles/scss/global.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="main__first">
+                <div class="main__first__info">
+                    {#                    <h1 class="main__first__h1">Let Your Home <br> Be Unique</h1>#}
+                    <h1 aria-label="Hi! I'm a developer" class="main__first__h1">
+                        Hi! I'm a&nbsp;<span class="typewriter"></span>
+                    </h1>
+                    <p class="main__first__p">There are many variations of the passages of lorem Ipsum <br>
+                        fromavailable,variations of the passages.</p>
+                    <button class="main__first__button">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'order_single' %}">Get Started</a>
+                        {% else %}
+                            <a href="{% url 'signin' %}">Get Started</a>
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+            <div class="work">
+                <div class="work_column">
+                    <h1 class="work_column_h1">Project Plan</h1>
+                    <p class="work_column_p">
+                        There are many variations of the <br>
+                        passages of lorem Ipsum from <br>
+                        available, majority.
+                    </p>
+                    <a href="{% url 'aboutus' %}" class="work_column_a">
+                        Read More
+                        <img src="{% static 'main/images/strelka.svg' %}" alt="">
+                    </a>
+                </div>
+                <div class="work_column">
+                    <h1 class="work_column_h1">Interior Work</h1>
+                    <p class="work_column_p">
+                        There are many variations of the <br>
+                        passages of lorem Ipsum from <br>
+                        available, majority.
+                    </p>
+                    <a href="{% url 'aboutus' %}" class="work_column_a">
+                        Read More
+                        <img src="{% static 'main/images/strelka.svg' %}" alt="">
+                    </a>
+                </div>
+                <div class="work_column">
+                    <h1 class="work_column_h1">Realization</h1>
+                    <p class="work_column_p">
+                        There are many variations of the <br>
+                        passages of lorem Ipsum from <br>
+                        available, majority.
+                    </p>
+                    <a href="{% url 'aboutus' %}" class="work_column_a">
+                        Read More
+                        <img src="{% static 'main/images/strelka.svg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="about_us">
+                <div class="about_us_info">
+                    <h1 class="about_us_info_h1">
+                        We Create The Art <br>
+                        Of Stylish Living <br>
+                        Stylishly
+                    </h1>
+                    <p class="about_us_info_p">
+                        It is a long established fact that a reader will be <br>
+                        distracted by the of readable content of a page <br>
+                        when lookings at its layouts the points of using <br>
+                        that it has a more-or-less normal. <br>
+                    </p>
+                    <div class="about_us_info_tel">
+                        <div class="about_us_info_tel_img">
+                            <img src="{% static 'main/images/call.svg' %}" alt="">
+                        </div>
+                        <div class="about_us_info_tel_info">
+                            <h2 class="about_us_info_tel_info_h2">012345678</h2>
+                            <span class="about_us_info_tel_info_span">Call Us Anytime</span>
+                        </div>
+                    </div>
+                    <button class="about_us_btn">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'contactus' %}">Contact with us</a>
+                        {% else %}
+                            <a href="{% url 'signin' %}">Contact with us</a>
+                        {% endif %}
+                    </button>
+                </div>
+                <div class="about_us_img">
+                    <img src="{% static 'main/images/aboutus.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="thinking_about_us">
+                <h1 class="thinking_about_us_h1">
+                    What the People Thinks <br>
+                    About Us
+                </h1>
+                <div class="thinking_about_us_div">
+                    <div class="thinking_about_us_column">
+                        <div class="thinking_about_us_column_user">
+                            <img src="{% static 'main/images/articles3.png' %}" alt="">
+                            <h2 class="thinking_about_us_column_user_h2">
+                                Lorem <br>
+                                <span>Ipsum</span>
+                            </h2>
+                        </div>
+                        <p class="thinking_about_us_column_p">
+                            Lorem Ipsum is simply dummy <br>
+                            text of the typesetting industry. <br>
+                            Ipsum has been. <br>
+                        </p>
+                    </div>
+                    <div class="thinking_about_us_column">
+                        <div class="thinking_about_us_column_user">
+                            <img src="{% static 'main/images/aboutus.jpg' %}" alt="">
+                            <h2 class="thinking_about_us_column_user_h2">
+                                Lorem <br>
+                                <span>Ipsum</span>
+                            </h2>
+                        </div>
+                        <p class="thinking_about_us_column_p">
+                            Lorem Ipsum is simply dummy <br>
+                            text of the typesetting industry. <br>
+                            Ipsum has been scrambled it <br>
+                            to make a type book. <br>
+                        </p>
+                    </div>
+                    <div class="thinking_about_us_column">
+                        <div class="thinking_about_us_column_user">
+                            <img src="{% static 'main/images/followus1.png' %}" alt="">
+                            <h2 class="thinking_about_us_column_user_h2">
+                                Lorem <br>
+                                <span>Ipsum</span>
+                            </h2>
+                        </div>
+                        <p class="thinking_about_us_column_p">
+                            Lorem Ipsum is simply dummy <br>
+                            text of the typesetting industry. <br>
+                            Ipsum has been scrambled. <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="follow_us">
+                <h1 class="follow_us_h1">Follow Our Projects</h1>
+                <p class="follow_us_p">
+                    It is a long established fact that a reader will be distracted by the of readable <br>
+                    content of page lookings at its layouts points.
+                </p>
+                <div class="follow_us_container">
+                    <div class="follow_us_column">
+                        <img src="{% static 'main/images/followus1.png' %}" alt="">
+                        <h2 class="follow_us_column_title">Modern Kitchan</h2>
+                        <span class="follow_us_column_category">Decor / Artchitecture</span>
+                    </div>
+                    <div class="follow_us_column">
+                        <img src="{% static 'main/images/followus2.png' %}" alt="">
+                        <h2 class="follow_us_column_title">Modern Kitchan</h2>
+                        <span class="follow_us_column_category">Decor / Artchitecture</span>
+                    </div>
+                    <div class="follow_us_column">
+                        <img src="{% static 'main/images/followus3.png' %}" alt="">
+                        <h2 class="follow_us_column_title">Modern Kitchan</h2>
+                        <span class="follow_us_column_category">Decor / Artchitecture</span>
+                    </div>
+                    <div class="follow_us_column">
+                        <img src="{% static 'main/images/followus4.png' %}" alt="">
+                        <h2 class="follow_us_column_title">Modern Kitchan</h2>
+                        <span class="follow_us_column_category">Decor / Artchitecture</span>
+                    </div>
+                </div>
+            </div>
+            <div class="experiance">
+                <span class="experiance_text_span">
+                    12
+                    <h3 class="experiance_text_h3">Years Of Experiance</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ experience.count }}
+                    <h3 class="experiance_text_h3">Success Project</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ experience.count }}
+                    <h3 class="experiance_text_h3">Active Project</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ user.count }}
+                    <h3 class="experiance_text_h3">Happy CUstomers</h3>
+                </span>
+            </div>
+            <div class="articles_news">
+                <h1 class="articles_news_h1">Articles & News</h1>
+                <p class="articles_news_p">
+                    It is a long established fact that a reader will be distracted by the of readable content <br>
+                    of a page when lookings at its layouts the points of using.
+                </p>
+                <div class="articles_news_container">
+                    {% for object in furniture %}
+                        <div class="articles_news_column">
+                            <img src="{{ object.image.url }}" alt="">
+                            <span class="articles_news_column_category">{{ object.categories }}</span>
+                            <p class="articles_news_column_p">
+                                {{ object.short_description|safe }}
+                            </p>
+                            <h3 class="articles_news_column_span">
+                                {{ object.created_at|date:'d F Y' }}
+                                <a href="{% url 'detail' pk=object.pk %}">
+                                    <img src="{% static 'main/images/strelka2.png' %}" alt=""
+                                         class="articles_news_column_span_img">
+                                </a>
+                            </h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="join">
+                <h1 class="join_h1">Wanna join the interno?</h1>
+                <h4 class="join_h4">It is a long established fact will be distracted.</h4>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'contactus' %}" class="join_a">
+                        <button class="join_btn">
+                            Contact With Us
+                        </button>
+                    </a>
+                {% else %}
+                    <a href="{% url 'signin' %}" class="join_a">
+                        <button class="join_btn">
+                            Contact With Us
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

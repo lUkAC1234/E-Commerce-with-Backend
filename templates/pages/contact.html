@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="contact-title">
+                <div class="page_way">
+                    <h1 class="page_way_title">Contact Us</h1>
+                    <h4 class="page_way_info">Home / Contact Us</h4>
+                </div>
+            </div>
+            <div class="contact__wrapper">
+                <div class="container">
+                    <div class="content">
+                        <div class="left-side">
+                            <div class="address details">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="topic">Address</div>
+                                <div class="text-one">Uzbekistan</div>
+                                <div class="text-two">Tashkent</div>
+                            </div>
+                            <div class="phone details">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="topic">Phone</div>
+                                <div class="text-one">+998 33 170 17 06</div>
+                                <div class="text-two">+998 93 395 75 45</div>
+                            </div>
+                            <div class="email details">
+                                <i class="fas fa-envelope"></i>
+                                <div class="topic">Email</div>
+                                <div class="text-one">shaxobiddinzuxriddinov@gmail.com</div>
+                                <div class="text-two">zuxriddinov@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="right-side">
+                            <div class="topic-text">Send us a message</div>
+                            <p><b>If you have any questions <br>
+                                you can write to us by email / call / come to our office <br>
+                                Thank for visiting our website</b></p>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="input-box">
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <h6 class="input-error" for="">{{ form.name.errors }}</h6>
+                                    {% endif %}
+                                </div>
+                                {% if form.name.errors %} <br> {% endif %}
+                                <div class="input-box">
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <h6 class="input-error" for="">{{ form.email.errors }}</h6>
+                                    {% endif %}
+                                </div>
+                                {% if form.email.errors %} <br> {% endif %}
+                                <div class="input-box message-box">
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                        <h6 class="input-error" for="">{{ form.message.errors }}</h6>
+                                    {% endif %}
+                                </div>
+                                {% if form.message.errors %} <br> {% endif %}
+                                <div class="input-box">
+                                    {{form.captcha}}
+                                    <br><br>
+                                </div>
+                                <br><br>
+                                <div class="button">
+                                    <button type="submit">Send Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact__wrapper">
+                <div class="container-user">
+                    {% for item in contact_admin %}
+                        {% if request.user.is_staff %}
+                            <div class="user-container">
+                                <div class="user-text-container">
+                                    <div class="user-text-column">
+                                        <h1 class="user-text">Admin: </h1>
+                                        <span>{{ request.user }}</span>
+                                        <h1 class="user-text">Created in: </h1>
+                                        <span>{{ item.created_at|date:"d F Y f" }}</span>
+                                        <h1 class="user-text">Name: </h1>
+                                        <span>{{ item.name }}</span>
+                                        <h1 class="user-text">Email: </h1>
+                                        <span>{{ item.email }}</span>
+                                        <h1 class="user-text">Message: </h1>
+                                        <p>{{ item.message }}</p>
+                                        <h1 class="user-text">Updated in: </h1>
+                                        <span>{{ item.updated_at|date:"d F Y f" }}</span>
+                                        <h1 class="user-text">Who create: </h1>
+                                        <p>{{ item.user }}</p>
+                                    </div>
+                                    <div class="user-text-column">
+                                        <a href="{% url 'contactdelete' pk=item.pk %}"><i class="fa fa-trash"
+                                                                                          style="color: #dc3545"></i></a>
+                                        {% if request.user == item.user %}
+                                            <a href="{% url 'contactupdate' pk=item.pk %}"><i class="fa fa-pen"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% elif request.user == item.user %}
+                            <div class="user-container">
+                                <div class="user-text-container">
+                                    <div class="user-text-column">
+                                        <h1 class="user-text">Created in: </h1>
+                                        <span>{{ item.created_at|date:"d F Y f" }}</span>
+                                        <h1 class="user-text">Name: </h1>
+                                        <span>{{ item.name }}</span>
+                                        <h1 class="user-text">Email: </h1>
+                                        <span>{{ item.email }}</span>
+                                        <h1 class="user-text">Message: </h1>
+                                        <p>{{ item.message }}</p>
+                                        <h1 class="user-text">Updated in: </h1>
+                                        <span>{{ item.updated_at|date:"d F Y f" }}</span>
+                                    </div>
+                                    <div class="user-text-column">
+                                        <a href="{% url 'contactdelete' pk=item.pk %}"><i class="fa fa-trash" style="color: #dc3545"></i></a>
+                                        <a href="{% url 'contactupdate' pk=item.pk %}"><i class="fa fa-pen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

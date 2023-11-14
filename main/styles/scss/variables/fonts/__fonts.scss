@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// default styles that can be overridden
+.dm-serif-display {
+    font: {
+        family: 'DM Serif Display', serif;
+    }
+}
+
+.jost {
+    font: {
+        family: 'Jost', serif;
+    }
+}
+
+.dm-serif-display,
+.just {
+    font: {
+        size: 20px;
+        style: normal;
+        weight: 400;
+    }
+}
+
+.h1-font {
+    color: #292F36;
+    line-height: 125%;
+    letter-spacing: 0.02em;
+}
+
+.info-font {
+    font-size: 22px;
+    color: #4D5053;
+    letter-spacing: 0.01em;
+}
+
+.grid {
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-column-end-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.flex-column-center-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.flex-column-center-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+    This font is used at the beginning of every page 
+    and in order not to repeat the code this font was create
+*/
+
+.main_way {
+    width: 100%;
+    height: 360px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.page-way {
+    width: 503px;
+    height: 180px;
+    background: #fff;
+    border-radius: 37px 37px 0px 0px;
+}
+
+.page-way-title {
+    @extend .h1-font;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 41px;
+}
+
+.page-way-info {
+    text-align: center;
+    @extend .info-font;
+    padding-bottom: 41px;
+}

@@ -1,0 +1,27 @@
+@import "../pages/all_pages/_home";
+@import "../pages/all_pages/_about";
+@import "../pages/all_pages/_service_single";
+@import "../pages/all_pages/_services";
+@import "../pages/all_pages/_order";
+@import "../pages/all_pages/_sign";
+@import "../pages/all_pages/_contact";
+@import "../pages/all_pages/_order-single";
+@import "../pages/all_pages/_profile";
+@import "../pages/all_pages/_edit";
+@import "../pages/all_pages/_faq";
+@import "../pages/all_pages/_order-detail";
+.main {
+    animation: main 2s ease-in-out;
+}
+
+@keyframes main {
+    0% {
+        transform: translateY(-100px);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

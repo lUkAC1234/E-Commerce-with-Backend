@@ -1,0 +1,330 @@
+.main {
+    .main__wrapper {
+        .about_title {
+            & {
+                @extend .main_way;
+                background-image: url(../../images/aboutmain.png);
+            }
+            .page_way {
+                & {
+                    @extend .page-way;
+                }
+                .page_way_title {
+                    @extend .page-way-title;
+                }
+
+                .page_way_info {
+                    @extend .page-way-info;
+                }
+                
+            }
+        }
+        .my_fav_things {
+            & {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                place-content: center;
+                place-items: center;
+                margin-top: 250px;
+            }
+
+            .my_fav_things_column {
+                .my_fav_things_column_h3t, .my_fav_things_column_h4t {
+                    text-align: center;
+                    font-weight: 400;
+                }
+                
+                .my_fav_things_column_h1t {
+                    font-size: 85px;
+                    text-align: center;
+                }
+                .my_fav_things_column_h3t {
+                    font-size: 35px;
+                    color: var(--primary2);
+                    font-style: italic;
+                }
+                .my_fav_things_column_h4t {
+                    font-size: 25px;
+                    color: var(--basic-font);
+                    padding: 34px 0 0;
+                }
+            }
+        }
+        @media screen and (max-width: 735px) {
+            .my_fav_things {
+                & {
+                    grid-template-columns: auto;
+                }
+                .my_fav_things_border {
+                    img {
+                        max-width: 80%;
+                        margin: 0 10%;
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+            @media screen and (max-width: 380px) {
+                .my_fav_things {
+                    .my_fav_things_border {
+                        img {
+                            max-width: 65%;
+                            margin: 0 20%;
+                        }
+                    }
+                }
+            }
+        }
+        .what_we_do {
+            & {
+                @extend .grid;
+                grid-template-columns: auto auto;
+                padding-top: 220px;
+                grid-column-gap: 82px;
+            }
+        
+            .what_we_do_column_title {
+                @extend .h1-font;
+                font-size: 50px;
+                padding: 0px 20px;
+            }
+            
+            .what_we_do_column_text {
+                @extend .info-font;
+                padding: 23px 20px 41px;
+            }
+
+            .what_we_do_column_btn {
+                & {
+                    @extend .flex-row-center-center;
+                    padding: 26px 70px 26px 41px;
+                    border: none;
+                    margin: 30px 2%;
+                    background: #CDA274;
+                    box-shadow: 0px 10px 20px #1F2022;
+                    border-radius: 18px;
+                    color: var(--basic-white);
+                    @extend .jost;
+                    letter-spacing: 2%;
+                    text-align: center;
+                    font: {
+                        size: 18px;
+                        weight: 600;
+                    }
+                }
+                &::after {
+                    display: flex;
+                    content: "";
+                    width: 15px;
+                    height: 13px;
+                    background: {
+                        image: url("../../images/rightArrowBlack.svg");
+                        repeat: no-repeat;
+                        size: cover;
+                        position: center;
+                    }
+                    margin: 0 0 0 20px;
+                }
+                &:hover {
+                    & {
+                        background: var(--primary2);
+                        cursor: pointer;
+                        box-shadow: 0px 10px 20px #fff;
+                        transition: all 0.3s ease-in-out;
+                        color: var(--primary1);
+                    }
+                    &:hover::after {
+                        background: {
+                            image: url("../../images/rightArrow.png");
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 1335px){
+            .what_we_do {
+                grid-template-columns: auto;
+                grid-gap: 30px;
+            }
+            @media screen and (max-width: 676px) {
+                .what_we_do {
+                    .what_we_do_column > {
+                        img {
+                            width: 96%;
+                            margin: 0 2%;
+                        }
+                    }
+                }
+            }
+        }
+        .people_thinking {
+            & {
+                background-color: var(--primary3);
+                margin-top: 194px;
+            }
+            .people_thinking_title {
+                @extend .h1-font;
+                font-size: 50px;
+                text-align: center;
+                padding: 185px 0 40px;
+            }
+            .people_thinking_container {
+                & {
+                    @extend .grid;
+                    grid-template-columns: repeat(4, auto);
+                    grid-gap: 22px;
+                    padding-bottom: 184px;
+                }
+                img {
+                    width: 284px;
+                    height: 433px;
+                    border-radius: 32px;
+                }
+            }
+        }
+        @media screen and (max-width: 1221px) {
+            .people_thinking {
+                .people_thinking_container {
+                    grid-template-columns: repeat(2, auto);
+                }
+            }
+            @media screen and (max-width: 609px) {
+                .people_thinking {
+                    .people_thinking_container {
+                        grid-template-columns: repeat(1, auto);
+                    }
+                }
+            }
+        }
+        .project_idea {
+            & {
+                margin-top: 213px;
+            }
+            .project_idea_title {
+                @extend .h1-font;
+                text-align: center;
+                font-size: 50px;
+            }
+            .project_idea_form {
+                & {
+                    @extend .grid;
+                    grid-template-columns: repeat(2, 378px);
+                    grid-gap: 20px;
+                    margin-top: 80px;
+                }
+                .project_idea_input_div {
+                    .project_idea_input {
+                        & {
+                            width: 378px;
+                            border: none;
+                            background: transparent;
+                            outline: none;
+                            border-bottom: 1px solid #000000;
+                            margin: 20px 0;
+                        }
+
+                        &.big {
+                            width: 780px;
+                            margin: 50px 0 50px 398px;
+                        }
+                    }
+                    .project_idea_label {
+                        & {
+                            font-size: 22px;
+                            color: var(--basic-font);
+                        }
+                        &.big {
+                            padding-left: 400px;
+                        }
+                    }
+                }
+                .form_btn {
+                    & {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 77px 0 135px;
+                        padding-bottom: 100px;
+                    }
+                    .project_idea_btn {
+                        & {
+                            @extend .flex-row-center-center;
+                            padding: 22px 37px 26px 37px;
+                            border: none;
+                            background: var(--primary2);
+                            box-shadow: 0px 10px 20px #1F2022;
+                            border-radius: 18px;
+                            color: var(--basic-white);
+                            @extend .jost;
+                            letter-spacing: 2%;
+                            text-align: center;
+                            font: {
+                                size: 18px;
+                                weight: 600;
+                            }
+                        }
+                        &::after {
+                            display: flex;
+                            content: "";
+                            width: 15px;
+                            height: 13px;
+                            background: {
+                                image: url("../../images/rightArrow.png");
+                                repeat: no-repeat;
+                                size: cover;
+                                position: center;
+                            }
+                            margin: 0 0 0 10px;
+                        }
+                        &:hover {
+                            & {
+                                background: var(--primary1);
+                                cursor: pointer;
+                                box-shadow: 0px 10px 20px #FFFFFF;
+                                transition: all 0.3s ease-in-out;
+                                color: var(--basic-white);
+                            }
+                            &:hover::after {
+                                background: {
+                                    image: url("../../images/rightArrowBlack.png");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 800px) {
+                .project_idea_form {
+                    & {
+                        @extend .grid;
+                        grid-template-columns: repeat(1, 320px);
+                        grid-gap: 20px;
+                        margin-top: 80px;
+                    }
+                    .project_idea_input_div {
+                        .project_idea_input {
+                            & {
+                                width: 320px;
+                            }
+                            &.big {
+                                width: 320px;
+                                margin: 50px 0 50px 0;
+                            }
+                        }
+                        .project_idea_label {
+                            &.big {
+                                padding-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.errorlist {
+    li {
+        color: red;
+        list-style: none;
+    }
+}

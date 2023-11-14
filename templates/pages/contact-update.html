@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="contact-title">
+                <div class="page_way">
+                    <h1 class="page_way_title">Contact Us</h1>
+                    <h4 class="page_way_info">Home / Contact Us</h4>
+                </div>
+            </div>
+            {% if request.user == object.user %}
+                <div class="contact__wrapper">
+                    <div class="container">
+                        <div class="content">
+                            <div class="right-side">
+                                <div class="topic-text">Update</div>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-box">
+                                        <input type="text" name="name" placeholder="Enter your name"
+                                               value="{{ object.name }}">
+                                        {% if form.name.errors %}
+                                            <h6 class="input-error" for="">{{ form.name.errors }}</h6>
+                                        {% endif %}
+                                    </div>
+                                    {% if form.name.errors %} <br> {% endif %}
+                                    <div class="input-box">
+                                        <input type="email" name="email" placeholder="Enter your email"
+                                               value="{{ object.email }}">
+                                        {% if form.email.errors %}
+                                            <h6 class="input-error" for="">{{ form.email.errors }}</h6>
+                                        {% endif %}
+                                    </div>
+                                    {% if form.email.errors %} <br> {% endif %}
+                                    <div class="input-box message-box">
+                                        <input type="text" name="message" placeholder="Enter your message"
+                                               value="{{ object.message }}">
+                                        {% if form.message.errors %}
+                                            <h6 class="input-error" for="">{{ form.message.errors }}</h6>
+                                        {% endif %}
+                                    </div>
+                                    {% if form.message.errors %} <br> {% endif %}
+                                    <div class="button">
+                                        <button type="submit">Update</button>
+                                        <button>
+                                            <a href="{% url 'contactus' %}">GO BACK</a>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% include 'layouts/contactError.html' %}
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

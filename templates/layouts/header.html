@@ -1,0 +1,87 @@
+{% load static %}
+<header id="site-header">
+    <div id="site-header-container">
+        <div id="site-header-logo">
+            <a href="{% url 'main' %}" title="Home">
+                <img src="{% static 'main/images/logo.svg' %}" alt="logo">
+            </a>
+        </div>
+
+        <input type="checkbox" class="toggleSideMenu" id="toggleSideMenu" autocomplete="off">
+        <label for="toggleSideMenu" class="hamburger-icon">
+            <div class="hamburger-menu-line diagonal-1"></div>
+            <div class="hamburger-menu-line horizontal"></div>
+            <div class="hamburger-menu-line diagonal-2"></div>
+        </label>
+
+        <div id="side-menu-container">
+            <nav id="top-menu">
+                <br>
+                <ul id="main-menu">
+                    <li class="main-menu-item"><span>User:</span> <span class="userName">{{ request.user }}</span></li>
+                    <li class="main-menu-item"><a href="{% url 'main' %}">Home</a></li>
+                    <li class="main-menu-item"><a href="{% url 'aboutus' %}">About us</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="main-menu-item"><a href="{% url 'profile' %}">Profile</a></li>
+                    <li class="main-menu-item"><a href="{% url 'contactus' %}">Contact</a></li>
+                    {% endif %}
+                    <li class="main-menu-item"><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li class="main-menu-item">
+                        <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin: 0; padding: 0;">
+                            Services <i class="fa fa-sort-desc"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li style="margin: 0;"><a class="dropdown-item" href="{% url 'service' %}">Service</a></li>
+                            <li><a class="dropdown-item" href="{% url 'service_single' %}">Service Single</a></li>
+                        </ul>
+                    </li>
+                    <li class="main-menu-item"><a href="{% url 'order_single' %}">Furniture</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="site-header-search">
+            <div id="site-header-search-container">
+                <form action="{% url 'order_single' %}" autocomplete="on">
+                    <input id="search" name="search" type="text" placeholder="Search furniture..."
+                        value="{{ request.GET.search }}">
+                    <button id="search_submit" type="submit"><i class="icon-search"><img class="icon-header"
+                                src="https://img.icons8.com/ios-glyphs/20/666666/search--v1.png" /></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div id="site-header-auth-container">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'ShoppingCartView' %}" id="site-header-login-button" class="site-header-auth-button"><i
+                    class="fa fa-shopping-cart"
+                    style="width: 18px; height: 18px; padding-top: 12px; margin-right: 10px"></i><span></span></a>
+            <a href="{% url 'wish_list' %}" id="site-header-login-button" class="site-header-auth-heart-button"><i
+                    class="fa fa-heart"
+                    style="width: 18px; height: 18px; padding-top: 12px; margin-right: 10px"></i><span></span></a>
+            {% else %}
+            <a href="{% url 'signin' %}" id="site-header-login-button" class="site-header-auth-button"><i
+                    class="fa fa-shopping-cart"
+                    style="width: 18px; height: 18px; padding-top: 12px; margin-right: 10px"></i><span></span></a>
+            <a href="{% url 'signin' %}" id="site-header-login-button" class="site-header-auth-heart-button"><i
+                    class="fa fa-heart"
+                    style="width: 18px; height: 18px; padding-top: 12px; margin-right: 10px"></i><span></span></a>
+            {% endif %}
+        </div>
+        {% if request.user.is_authenticated %}
+        <div id="site-header-auth-container">
+            <a href="{% url 'signin' %}" id="site-header-login-button" class="site-header-auth-button"><i
+                    class="icon-login"><img class="icon-header" src="{% static 'main/images/logout.png' %}"
+                        style="width: 18px; height: 18px;" title="Log Out"></i><span></span></a>
+        </div>
+        {% else %}
+        <div id="site-header-auth-container">
+            <a href="{% url 'signin' %}" id="site-header-logout-button" class="site-header-auth-button"><i
+                    class="icon-logout"><img class="icon-header"
+                        src="https://img.icons8.com/ios-filled/18/666666/login-rounded-right.png"
+                        title="Sign In"></i><span></span></a>
+        </div>
+        {% endif %}
+
+    </div>
+</header>

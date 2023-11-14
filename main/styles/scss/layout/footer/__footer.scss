@@ -1,0 +1,81 @@
+// all footer code styles will be here
+.footer {
+    & {
+        padding-block: 5rem;
+        background-size: cover;
+        padding-bottom: 0;
+        width: 75%;
+        opacity: 1;
+        margin-bottom: 20px;
+        margin-left: 15%;
+        border-radius: 50px;
+    }
+    .footer__container {
+        & {
+            max-width: 170rem;
+            margin: auto;
+            padding: 0 1.5rem;
+        }
+        .footer__divider { margin-top: 25px; }
+        .footer_h3 {
+            @extend .jost;
+            font: {
+                size: 22px;
+                weight: 400;
+            }
+            padding-top: 30px;
+            color: #4D5053;
+            text-align: center;
+        }
+        .footer__top {
+            & {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+                row-gap: 2rem;
+                padding: 0;
+                margin: 0;
+            }
+            div {
+                & { width: 70%; }
+                .footer__list-link__p {
+                    text-decoration: none;
+                    color: inherit;
+                    @extend .jost;
+                    font-size: 16px;
+                    max-width: 282px;
+                }
+                .footer__title {
+                    font-size: 22px;
+                    color: var(--primary1);
+                    font-weight: 500;
+                    font-family: monospace;
+                    margin-bottom: 2rem;
+                    letter-spacing: 0.15em;
+                }
+                .footer__list {
+                    & {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2rem;
+                    }
+                    .footer__list-item {
+                        & {
+                            list-style: none;
+                            color: #4D5053;
+                            font-size: 22px;
+                        }
+                        .footer__list-link {
+                            & { @extend .jost; }
+                            &:hover { color: var(--primary1); }
+                        }
+                    }
+                    .footer__list-item:nth-child(1) {
+                        display: flex;
+                        padding-top: 30px;
+                        column-gap: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

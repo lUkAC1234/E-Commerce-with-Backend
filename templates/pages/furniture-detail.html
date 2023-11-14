@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    {% include 'layouts/sidebar.html' %}
+    <section class="furniture-detail">
+        <div class="main__wrapper">
+            <div class="detail-title">
+                <div class="page_way">
+                    <h1 class="page_way_title">Detail View</h1>
+                    <h4 class="page_way_info">Home / Order / Detail</h4>
+                </div>
+            </div>
+            <div class="order-detail">
+                <div class="info">
+                    <div class="info-user">
+                        <div class="info-user-container">
+                            <div class="info-user-column">
+                                <h3 class="info-user-item">Client</h3>
+                                <h3 class="info-user-item">Category</h3>
+                                <h3 class="info-user-item">Date</h3>
+                                <h3 class="info-user-item">Price</h3>
+                                <h3 class="info-user-item">Count</h3>
+                                <h3 class="info-user-item">Rating</h3>
+                                <p><a href="#" class="enroll">Order now ➜</a></p>
+                            </div>
+                            <div class="info-user-column">
+                                <h2>{{ request.user }}</h2>
+                                <h2>{{ object.categories|capfirst }}</h2>
+                                <h2>{{ object.created_at|date:"d F Y" }}</h2>
+                                {% if object.real_price != object.price %}
+                                    <h2><del style="color: var(--primary1);">${{ object.price }}</del> ${{ object.real_price }}</h2>
+                                {% else %}
+                                    <h2>{{ object.price }}$</h2>
+                                {% endif %}
+                                <h2>{{ object.count }}</h2>
+                                {% if object.rating == 1 %}
+                                    <h2 class="rating">★☆☆☆☆</h2>
+                                {% elif object.rating == 2 %}
+                                    <h2 class="rating">★★☆☆☆</h2>
+                                {% elif object.rating == 3 %}
+                                    <h2 class="rating">★★★☆☆</h2>
+                                {% elif object.rating == 4 %}
+                                    <h2 class="rating">★★★★☆</h2>
+                                {% else %}
+                                    <h2 class="rating">★★★★★</h2>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-furniture">
+                        <h1 class="info-furniture-title">{{ object.title }}</h1>
+                        <p class="info-furniture-description" style="width: 358px">{{ object.description|safe }}</p>
+                    </div>
+                </div>
+                <div class="image" id="fullScreenElement1">
+                    <img class="img" src="{{ object.image.url }}">
+                    <div class="img-button" onclick="toggleFullScreen('fullScreenElement1')">
+                        <i class="fa fa-expand" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="furniture_btns">
+                {% if object.get_previous_by_created_at %}
+                    <div class="furniture_btns_column">
+                        <a href="{% url 'detail' pk=object.get_previous_by_created_at.pk %}" class="furniture_btns_item">
+                            <p><i class="fa fa-reply"></i> Previous Pod </p>
+                        </a>
+                        <h5>{{ object.get_previous_by_created_at.title }}</h5>
+                    </div>
+                {% endif %}
+                {% if object.get_next_by_created_at %}
+                    <div class="furniture_btns_column">
+                        <h5>{{ object.get_next_by_created_at.title }}</h5>
+                        <a href="{% url 'detail' pk=object.get_next_by_created_at.pk %}" class="furniture_btns_item">
+                            <p>Next Pod <i class="fa fa-share"></i></p>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

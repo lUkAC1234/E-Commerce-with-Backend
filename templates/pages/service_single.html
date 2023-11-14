@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="service-single_title">
+                <div class="page_way">
+                    <h1 class="page_way_title">Services Single</h1>
+                    <h4 class="page_way_info">Home / Services Single</h4>
+                </div>
+            </div>
+            <div class="we_set">
+                <div class="we_set_column">
+                    <h1 class="we_set_title">
+                        We set the trends of <br>
+                        modern living <br>
+                        Services.
+                    </h1>
+                </div>
+                <div class="we_set_column">
+                    <p class="we_set_text_orange">
+                        It is a long established fact that a reader will be distracted by the of <br>
+                        readable content of a page
+                    </p>
+                    <br><br>
+                    <p class="we_set_text">
+                        when lookings at its layouts the points spriof using that it has a more <br>
+                        less normal.A wonderful serenity has taken pgossession of my entire <br>
+                        soul, like thesce sweet morndsings of sphring which I enjoy with my <br>
+                        forwhole heart. I am alone, and feel the charm of excgistence in this <br>
+                        spot, which was created for the bliss of souls like mine. <br>
+                        <br>
+                        when lookings at its layouts the points spriof using that it has a more <br>
+                        less normal.A wonderful serenity has taken pgossession of my entire <br>
+                        soul, like thesce sweet morndsings of sphring which I enjoy with my <br>
+                        forwhole heart. I am alone, and feel the charm of excgistence in this <br>
+                        spot, which was created for the bliss of souls like mine.
+                    </p>
+                </div>
+            </div>
+            <div class="brand_container">
+                <div class="brand_column">
+                    <img src="{% static 'main/images/brand1.png' %}" alt="">
+                </div>
+                <div class="brand_column">
+                    <img src="{% static 'main/images/brand5.png' %}" alt="">
+                </div>
+                <div class="brand_column">
+                    <img src="{% static 'main/images/brand3.png' %}" alt="">
+                </div>
+                <div class="brand_column">
+                    <img src="{% static 'main/images/brand4.png' %}" alt="">
+                </div>
+                <div class="brand_column">
+                    <img src="{% static 'main/images/brand2.png' %}" alt="">
+                </div>
+            </div>
+            <div class="example">
+                <img src="{% static 'main/images/example.png' %}" alt="">
+            </div>
+            <div class="what_we_do">
+                <div class="what_we_do_column">
+                    <h1 class="what_we_do_column_title">Use of Interior</h1>
+                    <p class="what_we_do_column_text">
+                        1 We provide high quality design services. <br><br>
+                        2 Project on time and Latest Design. <br><br>
+                        3 Scientific Skills For getting a better result. <br><br>
+                        4 Renovations Benefit of Service <br><br>
+                        5 We are confident about our projects. <br><br>
+                    </p>
+                </div>
+                <div class="what_we_do_column">
+                    <h1 class="what_we_do_column_title">Make An Art</h1>
+                    <p class="what_we_do_column_text">
+                        1 We provide high quality design services. <br><br>
+                        2 Project on time and Latest Design. <br><br>
+                        3 Scientific Skills For getting a better result. <br><br>
+                        4 Renovations Benefit of Service <br><br>
+                        5 We are confident about our projects. <br><br>
+                    </p>
+                </div>
+                <div class="what_we_do_column">
+                    <img src="{% static 'main/images/example2.png' %}" alt="">
+                </div>
+                <div class="what_we_do_column">
+                    <h1 class="what_we_do_column_title">We love design.That's <br> how we got here.</h1>
+                    <p class="what_we_do_column_text">
+                        It is a long established fact that a reader will be <br>
+                        distracted by the of readable content .
+                    </p>
+                    <a href="{% url 'service' %}" class="what_we_do_column_a">
+                        <button class="what_we_do_column_btn">
+                            Our Portfolio
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="experiance">
+                <span class="experiance_text_span">
+                    12
+                    <h3 class="experiance_text_h3">Years Of Experiance</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ experience.count }}
+                    <h3 class="experiance_text_h3">Success Project</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ experience.count }}
+                    <h3 class="experiance_text_h3">Active Project</h3>
+                </span>
+                <span class="experiance_text_span">
+                    {{ user.count }}
+                    <h3 class="experiance_text_h3">Happy CUstomers</h3>
+                </span>
+            </div>
+        </div>
+    </main>
+{% endblock %}

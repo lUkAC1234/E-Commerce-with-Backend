@@ -1,0 +1,125 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="about_title">
+                <div class="page_way">
+                    <h1 class="page_way_title">About Us</h1>
+                    <h4 class="page_way_info">Home / About Us</h4>
+                </div>
+            </div>
+            <div class="my_fav_things">
+                <div class="my_fav_things_border">
+                    <img src="{% static 'main/images/border-left.png' %}" alt="">
+                </div>
+                <div class="my_fav_things_column">
+                    <h1 class="my_fav_things_column_h1t">“</h1> <br>
+                    <h3 class="my_fav_things_column_h3t">
+                        I like an interior that defies labeling. I don't <br>
+                        really want someone to walk into a room and <br>
+                        know that I did it
+                    </h3>
+                    <h4 class="my_fav_things_column_h4t">-BUNNY WILLIAMS</h4>
+                </div>
+                <div class="my_fav_things_border">
+                    <img src="{% static 'main/images/border-right.png' %}" alt="">
+                </div>
+            </div>
+            <div class="what_we_do">
+                <div class="what_we_do_column">
+                    <h1 class="what_we_do_column_title">What We Do</h1>
+                    <p class="what_we_do_column_text">
+                        It is a long established fact that a reader will be <br>
+                        distracted by the of readable content of a page <br>
+                        when lookings at its layouts the points of using <br>
+                        that it has a more-or-less normal.
+                    </p>
+                    <a href="{% url 'service' %}" class="what_we_do_column_a">
+                        <button class="what_we_do_column_btn">
+                            Our Concept
+                        </button>
+                    </a>
+                </div>
+                <div class="what_we_do_column">
+                    <img src="{% static 'main/images/wedo1.png' %}" alt="">
+                </div>
+                <div class="what_we_do_column">
+                    <img src="{% static 'main/images/wedo2.png' %}" alt="">
+                </div>
+                <div class="what_we_do_column">
+                    <h1 class="what_we_do_column_title">The End Result</h1>
+                    <p class="what_we_do_column_text">
+                        It is a long established fact that a reader will be <br>
+                        distracted by the of readable content of a page <br>
+                        when lookings at its layouts the points of using <br>
+                        that it has a more-or-less normal.
+                    </p>
+                    <a href="{% url 'service' %}" class="what_we_do_column_a">
+                        <button class="what_we_do_column_btn">
+                            Our Portfolio
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="people_thinking">
+                <h1 class="people_thinking_title">What the People Thinks <br> About Us</h1>
+                <div class="people_thinking_container">
+                    <div class="people_thinking_column">
+                        <img src="{% static 'main/images/person1.png' %}" alt="">
+                    </div>
+                    <div class="people_thinking_column">
+                        <img src="{% static 'main/images/person2.png' %}" alt="">
+                    </div>
+                    <div class="people_thinking_column">
+                        <img src="{% static 'main/images/person3.png' %}" alt="">
+                    </div>
+                    <div class="people_thinking_column">
+                        <img src="{% static 'main/images/person1.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="project_idea">
+                <h1 class="project_idea_title">
+                    Creative project? Let's have <br>
+                    a productive talk.
+                </h1>
+                <form action="" class="project_idea_form" method="post">
+                    {% csrf_token %}
+                    <div class="project_idea_input_div">
+                        <label for="project_idea_input_id" class="project_idea_label">Name</label>
+                        <input type="text" class="project_idea_input" id="project_idea_input_id" name="name" placeholder="lukac">
+                    </div>
+                    <div class="project_idea_input_div">
+                        <label for="project_idea_input_id" class="project_idea_label">Email</label>
+                        <input type="email" class="project_idea_input" id="project_idea_input_id" name="email" placeholder="lukac@gmail.com">
+                    </div>
+                    <div class="project_idea_input_div">
+                        <label for="project_idea_input_id" class="project_idea_label big">Hello I am Intrested
+                            in..</label>
+                        <input type="text" name="message" class="project_idea_input big" id="project_idea_input_id" placeholder="Hello I want...">
+                    </div>
+                    <div class="project_idea_input_div">
+                        {{ form.captcha }}
+                        {{ form.captcha.errors }}
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        <div class="form_btn">
+                            <button type="submit" class="project_idea_btn">
+                                Send Now
+                            </button>
+                        </div>
+                    {% else %}
+                        <div class="form_btn">
+                            <a href="{% url 'signin' %}" class="project_idea_btn">
+                                Send Now
+                            </a>
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

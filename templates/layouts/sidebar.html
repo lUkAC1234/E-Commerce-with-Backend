@@ -1,0 +1,99 @@
+{% load my_tags %}
+{% load static %}
+<div class="menu-btn">
+    <i class="fas fa-bars"></i>
+</div>
+
+
+<div class="side-bar">
+
+    <header>
+
+        <div class="close-btn">
+
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="{% url 'main' %}">
+            <img src="{% static 'main/images/logo.svg' %}"
+                 class="logo-image"
+                 alt="">
+        </a>
+    </header>
+    <div class="menu">
+        <div class="item"><a href="#"><i class="fas fa-desktop"></i>Dashboard</a></div>
+        <div class="item">
+            <a class="sub-btn"><i class="fa fa-sort"></i>Size<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                {% for size in object.sizes.all %}
+                    <span class="sub-item">{{ size.size|capfirst }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="item">
+            <a class="sub-btn"><i class="fa fa-th"></i>Categories<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="{% url 'order_single' %}?category={{ object.categories.pk }}"
+                   class="sub-item">{{ object.categories.name|capfirst }} ({{ object.categories.products.count }})</a>
+            </div>
+        </div>
+        <div class="item">
+            <a class="sub-btn"><i class="fa fa-table"></i>Colors<i
+                    class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                {% for color in object.colors.all %}
+                    <div class="color">
+                        <i class="fa fa-paint-brush"></i>
+                        <span class="sub-item">
+                            <div class="color-item"
+                                 style="background-color: {{ color.name }}; width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 5px 10px rgb(0 0 0 / 20%);">
+                            </div>
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
+        <div class="item">
+            <a class="sub-btn"><i class="fas fa-tags"></i>Tags<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                {% for tag in object.tags.all %}
+                    <a href="{% url 'order_single' %}?tag={{ tag.pk }}" class="sub-item"><i
+                            class="fa fa-hashtag"></i>{{ tag.name|capfirst }} ({{ tag.fTags.count }})</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% if request.user.is_authenticated %}
+            {% is_wishlist request object.id as obj %}
+            {% is_cart request object.id as value %}
+            {% cart_info request as cart %}
+            {% if obj %}
+                <div class="item"><a href="{% url 'wishlist' id=object.id %}?path={{ request.path }}"><i
+                        class="fa fa-heart" aria-hidden="true" style="color: #dc3545"></i> Remove favorite</a></div>
+            {% else %}
+                <div class="item"><a href="{% url 'wishlist' id=object.id %}?path={{ request.path }}"><i
+                        class="bx bx-heart" aria-hidden="true"></i> Add to favorites</a></div>
+            {% endif %}
+            {% if value %}
+                 <div class="item"><a class="cart-icon" href="{% url 'add_cart' id=object.id %}?next={{ request.path }}">
+                    <i class="fa fa-shopping-cart" aria-hidden="true" style="color: var(--primary1)"></i>
+                    Remove from Cart
+                 </a></div>
+            {% else %}
+                 <div class="item"><a class="cart-icon" href="{% url 'add_cart' id=object.id %}?next={{ request.path }}">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    Add to Cart
+                 </a></div>
+            {% endif %}
+            <div class="item"><a href="{% url 'wish_list' %}"><i class="fa fa-heart" aria-hidden="true"></i>Wish
+                List</a></div>
+            <div class="item"><a href="{% url 'ShoppingCartView' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart
+                List ({{ cart.0 }})</a></div>></div>
+        {% else %}
+            <div class="item"><a href="{% url 'signin' %}"><i class="fa fa-heart" aria-hidden="true"></i>Add to
+                favourites</a></div>
+            <div class="item"><a href="{% url 'signin' %}"><i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart</a>
+            </div>
+        {% endif %}
+    <br><br><br>
+</div>
+</div>

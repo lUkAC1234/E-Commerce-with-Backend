@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="contact-title">
+                <div class="page_way">
+                    <h1 class="page_way_title">Contact Us</h1>
+                    <h4 class="page_way_info">Home / Contact Us</h4>
+                </div>
+            </div>
+            {% if request.user == object.user %}
+                <div class="contact__wrapper">
+                    <div class="container-user">
+                        <div class="user-container">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="user-text-container">
+                                    <div class="user-text-column">
+                                        <h1 class="user-text">Name: </h1>
+                                        <span>{{ object.name }}</span>
+                                        <h1 class="user-text">Email: </h1>
+                                        <span>{{ object.email }}</span>
+                                        <h1 class="user-text">Message: </h1>
+                                        <p>{{ object.message }}</p>
+                                    </div>
+                                    <div class="user-text-column">
+                                        <a href="{% url 'contactus' %}" class="contact-a">NO</a>
+                                        <button type="submit">YES</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% elif request.user.is_staff %}
+                <div class="contact__wrapper">
+                    <div class="container-user">
+                        <div class="user-container">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="user-text-container">
+                                    <div class="user-text-column">
+                                        <h1 class="user-text">Name: </h1>
+                                        <span>{{ object.name }}</span>
+                                        <h1 class="user-text">Email: </h1>
+                                        <span>{{ object.email }}</span>
+                                        <h1 class="user-text">Message: </h1>
+                                        <p>{{ object.message }}</p>
+                                    </div>
+                                    <div class="user-text-column">
+                                        <a href="{% url 'contactus' %}" class="contact-a">NO</a>
+                                        <button type="submit">YES</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% include 'layouts/contactError.html' %}
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

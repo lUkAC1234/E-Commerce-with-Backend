@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %}
+{% load my_tags %}
+{% load static %}
+
+{% block content %}
+    <br><br><br>
+    <main class="main">
+        <div class="main__wrapper">
+            <div class="order-single-title">
+                <div class="page_way">
+                    {% if tag %}
+                        <h1 class="page_way_title"><i class="fa fa-hashtag"
+                                                      aria-hidden="true"></i>{{ tag.name|capfirst }}</h1>
+                    {% else %}
+                        <h1 class="page_way_title">Wish List</h1>
+                    {% endif %}
+                    <h4 class="page_way_info">Home / Order Furniture / Wish List</h4>
+                </div>
+            </div>
+            <br>
+            <div class="order-single">
+                {% for object in object_list %}
+                    <div class="item">
+                        <div class="order-menu-container">
+                            <a href="{% url 'detail' pk=object.furniture.pk %}" style='color: var(--primary1);'><img
+                                    src="{{ object.furniture.image.url }}" alt="" class="order-menu"></a>
+                        </div>
+                        <h2 class="title"><a href="{% url 'detail' pk=object.furniture.pk %}"
+                                             style='color: var(--primary1);'>{{ object.furniture.title }}</a></h2>
+                        <p class="price">Category: <strong>{{ object.furniture.categories }}</strong></p>
+                        {% if object.furniture.real_price != object.furniture.price %}
+                            <p class="price">Price: <strong>
+                                <del style="color: var(--primary1)">${{ object.furniture.price }}</del>
+                                ${{ object.furniture.real_price }}</strong></p>
+                        {% else %}
+                            <p class="price">Price: <strong>{{ object.furniture.real_price }}$</strong></p>
+                        {% endif %}
+                        <div class="item wishlits">
+                            {% is_wishlist request object.furniture.id as obj %}
+                            {% is_cart request object.id as value %}
+                            {% cart_info request as cart %}
+                            {% if obj %}
+                                <a href="{% url 'wishlist' id=object.furniture.id %}?path={{ request.path }}"><i
+                                        class="fa fa-heart" aria-hidden="true" style="color: #dc3545"></i> Remove
+                                    from favorites</a>
+                            {% else %}
+                                <a href="{% url 'wishlist' id=object.furniture.id %}?path={{ request.path }}"><i
+                                        class="fa fa-heart" aria-hidden="true"></i> Add to favorites</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="item">
+                        <p class="price">Sorry but you dont have any favourites <i
+                                class="fa fa-exclamation-triangle"></i>
+                            <br>
+                            <a href="{% url 'order_single' %}" style="color: var(--primary1)">GO BACK</a>
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

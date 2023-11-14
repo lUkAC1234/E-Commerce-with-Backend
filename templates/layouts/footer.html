@@ -1,0 +1,114 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__top">
+            <div>
+                <a href="/main.html">
+                    <img src="{% static 'main/images/logo.svg' %}" alt="">
+                </a>
+                <p class="footer__list-link__p">
+                    It is a long established fact that a reader
+                    will be distracted lookings.
+                </p>
+                <ul class="footer__list">
+                    <li class="footer__list-item">
+                        <a href="https://www.facebook.com/" class="footer__list-link">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="https://twitter.com/" class="footer__list-link">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="https://www.linkedin.com/" class="footer__list-link">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="https://www.instagram.com/" class="footer__list-link">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="footer__title">Interior</h6>
+                <ul class="footer__list">
+                    <li class="footer__list-item">
+                        <a href="{% url 'order_single' %}" class="footer__list-link">Furniture</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a href="{% url 'aboutus' %}" class="footer__list-link">About Us</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="footer__list-item">
+                            <a href="{% url 'ShoppingCartView' %}" class="footer__list-link">Cart</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'wish_list' %}" class="footer__list-link">Wish List</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'contactus' %}" class="footer__list-link">Contact Us</a>
+                        </li>
+                    {% else %}
+                        <li class="footer__list-item">
+                            <a href="{% url 'signin' %}" class="footer__list-link">Cart</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'signin' %}" class="footer__list-link">Wish List</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'signin' %}" class="footer__list-link">Contact Us</a>
+                        </li>
+                    {% endif %}        
+                </ul>
+            </div>
+            <div>
+                <h6 class="footer__title">Pages</h6>
+                <ul class="footer__list">
+                    {% if request.user.is_authenticated %}
+                        <li class="footer__list-item">
+                            <a href="{% url 'profile' %}" class="footer__list-link">Profile</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'edit' %}" class="footer__list-link">Profile Edit</a>
+                        </li>
+                    {% else %}
+                        <li class="footer__list-item">
+                            <a href="{% url 'signin' %}" class="footer__list-link">Profile</a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="{% url 'signin' %}" class="footer__list-link">Profile Edit</a>
+                        </li>
+                    {% endif %}
+                    <li class="footer__list-item">
+                        <a href="{% url 'faq' %}" class="footer__list-link">FAQ</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a href="{% url 'service' %}" class="footer__list-link">Service</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a href="{% url 'service_single' %}" class="footer__list-link">Service Single</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="footer__title">Contact</h6>
+                <ul class="footer__list">
+                    <li class="footer__list-item">
+                        <a href="" class="footer__list-link">
+                            Tashkent 12 Shop
+                        </a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a href="" class="footer__list-link">contact@interno.com</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a href="" class="footer__list-link">+998 (33) 170 17 - 06</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer__divider">
+        <div class="footer__bottom">
+            <span></span>
+        </div>
+        <h3 class="footer_h3">Copyright © Interno | Designed by Shaxobiddin</h3>
+    </div>
+</footer>

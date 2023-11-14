@@ -1,0 +1,242 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="main">
+    <div class="main__wrapper">
+        <div class="services-title">
+            <div class="page_way">
+                <h1 class="page_way_title">Services</h1>
+                <h4 class="page_way_info">Home / Services</h4>
+            </div>
+        </div>
+        <div class="services__content-templates-grid">
+            <ul class="services__content-templates-grid__list">
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">Project Plan</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">Interior Work</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">Retail Design</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">2d/3d Art Work</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">Interior Work</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+                <li>
+                    <div class="services__content-templates-grid__list__box">
+                        <article class="services__content-templates-grid__list__box__article">
+                            <h2 class="services__content-templates-grid__list__box__article__title">Decoration Work</h2>
+                            <p class="services__content-templates-grid__list__box__article__description">
+                                There are many variations of the passages of lorem ipsum from available, majority
+                            </p>
+                            <a class="services__content-templates-grid__list__box__article__link" href="{% url 'service_single' %}">Read More</a>
+                        </article>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="services__htw">
+            <div class="services__htw__wrapper">
+                <section class="services__htw__wrapper__section">
+                    <header class="services__htw__wrapper__section__header">
+                        <h2 class="services__htw__wrapper__section__header__title">
+                            How Do We Work
+                        </h2>
+                        <p class="services__htw__wrapper__section__header__description">
+                            It is a long established fact will be distracted. Lorem Ipsum is simply dummy text of
+                            the printing and typesetting industry.
+                        </p>
+                    </header>
+                    <div class="services__htw__wrapper__section__content">
+                        <article class="services__htw__wrapper__section__content__article">
+                            <div class="services__htw__wrapper__section__content__article__block-1">
+                                <img src="{% static 'main/images/servicesImage1.png' %}" alt="image-1">
+                            </div>
+                            <div class="services__htw__wrapper__section__content__article__block-2">
+                                <div class="services__htw__wrapper__section__content__article__block-2__top">
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__left">
+                                        <img src="{% static 'main/images/servicesIcon1.png' %}" alt="icon-1">
+                                    </div>
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__right">
+                                        <figure class="services__htw__wrapper__section__content__article__block-2__top__right__figure">
+                                            01
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="services__htw__wrapper__section__content__article__block-2__bottom">
+                                    <h3 class="services__htw__wrapper__section__content__article__block-2__bottom__title">
+                                        Concept & Details
+                                    </h3>
+                                    <p class="services__htw__wrapper__section__content__article__block-2__bottom__description">
+                                        It is a long established fact  will be distracted.
+                                        Lorem Ipsum is simply dummy from text of the
+                                        and typesetting indufstry.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="services__htw__wrapper__section__content__article">
+                            <div class="services__htw__wrapper__section__content__article__block-2">
+                                <div class="services__htw__wrapper__section__content__article__block-2__top">
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__left">
+                                        <img src="{% static 'main/images/servicesIcon2.png' %}" alt="icon-2">
+                                    </div>
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__right">
+                                        <figure class="services__htw__wrapper__section__content__article__block-2__top__right__figure">
+                                            02
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="services__htw__wrapper__section__content__article__block-2__bottom">
+                                    <h3 class="services__htw__wrapper__section__content__article__block-2__bottom__title">
+                                        Idea for Work
+                                    </h3>
+                                    <p class="services__htw__wrapper__section__content__article__block-2__bottom__description">
+                                        It is a long established fact  will be distracted.
+                                        Lorem Ipsum is simply dummy from text of the
+                                        and typesetting indufstry.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="services__htw__wrapper__section__content__article__block-1">
+                                <img src="{% static 'main/images/servicesImage2.png' %}" alt="image-2">
+                            </div>
+                        </article>
+                        <article class="services__htw__wrapper__section__content__article">
+                            <div class="services__htw__wrapper__section__content__article__block-1">
+                                <img src="{% static 'main/images/servicesImage3.png' %}" alt="image-3">
+                            </div>
+                            <div class="services__htw__wrapper__section__content__article__block-2">
+                                <div class="services__htw__wrapper__section__content__article__block-2__top">
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__left">
+                                        <img src="{% static 'main/images/servicesIcon3.png' %}" alt="icon-3">
+                                    </div>
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__right">
+                                        <figure class="services__htw__wrapper__section__content__article__block-2__top__right__figure">
+                                            03
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="services__htw__wrapper__section__content__article__block-2__bottom">
+                                    <h3 class="services__htw__wrapper__section__content__article__block-2__bottom__title">
+                                        Design
+                                    </h3>
+                                    <p class="services__htw__wrapper__section__content__article__block-2__bottom__description">
+                                        It is a long established fact  will be distracted.
+                                        Lorem Ipsum is simply dummy from text of the
+                                        and typesetting indufstry.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="services__htw__wrapper__section__content__article">
+                            <div class="services__htw__wrapper__section__content__article__block-2">
+                                <div class="services__htw__wrapper__section__content__article__block-2__top">
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__left">
+                                        <img src="{% static 'main/images/servicesIcon4.png' %}" alt="icon-4">
+                                    </div>
+                                    <div class="services__htw__wrapper__section__content__article__block-2__top__right">
+                                        <figure class="services__htw__wrapper__section__content__article__block-2__top__right__figure">
+                                            04
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="services__htw__wrapper__section__content__article__block-2__bottom">
+                                    <h3 class="services__htw__wrapper__section__content__article__block-2__bottom__title">
+                                        Perfection
+                                    </h3>
+                                    <p class="services__htw__wrapper__section__content__article__block-2__bottom__description">
+                                        It is a long established fact  will be distracted.
+                                        Lorem Ipsum is simply dummy from text of the
+                                        and typesetting indufstry.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="services__htw__wrapper__section__content__article__block-1">
+                                <img src="{% static 'main/images/servicesImage4.png' %}" alt="image-4">
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="services__join">
+            <div class="services__join__wrapper">
+                <section class="services__join__wrapper__section">
+                    <article class="services__join__wrapper__section__article">
+                        <h3 class="services__join__wrapper__section__article__title">
+                            Wanna join the interno?
+                        </h3>
+                        <p class="services__join__wrapper__section__article__description">
+                            It is long established fact will be distracted.
+                        </p>
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'contactus' %}">
+                                <button class="services__join__wrapper__section__article__join-link" type="button" title="Tap to join us">
+                                    <span class="services__join__wrapper__section__article__join-link__text">
+                                        Contact With Us
+                                    </span>
+                                </button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'signin' %}">
+                                <button class="services__join__wrapper__section__article__join-link" type="button" title="Tap to join us">
+                                    <span class="services__join__wrapper__section__article__join-link__text">
+                                        Contact With Us
+                                    </span>
+                                </button>
+                            </a>
+                        {% endif %}
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

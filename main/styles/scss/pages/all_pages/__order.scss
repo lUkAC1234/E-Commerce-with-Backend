@@ -1,0 +1,219 @@
+.main {
+  .main__wrapper {
+    .order-title {
+      & {
+        @extend .main_way;
+        background-image: url("../../images/orderroom.jpg");
+      }
+    }
+
+    .page_way {
+      & {
+        @extend .page-way;
+      }
+
+      .page_way_title {
+        @extend .page-way-title;
+      }
+
+      .page_way_info {
+        @extend .page-way-info;
+      }
+
+    }
+
+    .image-container {
+      & {
+        @extend .flex-row-center-center;
+        margin: 100px 2%;
+        background: #fff;
+      }
+
+      .download-image {
+        width: 400px;
+        height: 400px;
+      }
+    }
+
+    #wrap {
+      & {
+        margin: 20px auto;
+        text-align: center;
+      }
+
+      button {
+        border: none;
+        background: none;
+      }
+
+      .download {
+        .btn-slide {
+          & {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 200px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 50px;
+            background: #fdfdfd;
+            border: 2px solid #efa666;
+            margin: 10px;
+            transition: .5s;
+          }
+
+          .circle {
+            display: block;
+            background-color: #efa666;
+            color: #fff;
+            position: absolute;
+            float: left;
+            margin: 3px;
+            line-height: 42px;
+            height: 40px;
+            width: 40px;
+            top: 0;
+            left: 0;
+            transition: .5s;
+            border-radius: 50%;
+          }
+
+          .title,
+          .title-hover {
+            position: absolute;
+            left: 90px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 16px;
+            font-weight: bold;
+            color: #efa666;
+            transition: .5s;
+          }
+
+          .title-hover {
+            left: 80px;
+            color: #fff;
+            opacity: 0;
+          }
+
+          &:hover {
+            & {
+              background-color: #efa666;
+            }
+
+            .circle {
+              left: 100%;
+              margin-left: -45px;
+              background-color: #fdfdfd;
+              color: #efa666;
+            }
+
+            .title {
+              left: 40px;
+              opacity: 0;
+            }
+
+            .title-hover {
+              opacity: 1;
+              left: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    .order {
+      & {
+        display: flex;
+        gap: 10px;
+        width: 90%;
+        max-width: 85%;
+        margin: 0px auto;
+        padding: 10px;
+        overflow-x: scroll;
+      }
+
+      &::-webkit-scrollbar {
+        background: #818181;
+        height: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--primary2);
+      }
+
+      .item {
+        & {
+          flex: 1 0 250px;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px 1px #ccc;
+          color: #444;
+          scroll-snap-align: start;
+          scroll-margin: 5px;
+          max-width: 380px;
+        }
+
+        .order-menu-container {
+          & {
+            background: var(--primary4);
+            border-radius: 16px;
+            width: 340px;
+            height: 290px;
+            @extend .flex-row-center-center;
+          }
+
+          .order-menu {
+            border-radius: 32px 32px 5px 5px;
+            max-width: 340px;
+            max-height: 290px;
+          }
+        }
+
+        .title {
+          max-width: 170px;
+          margin: 10px 0 25px;
+          font-weight: 900;
+        }
+
+        .stars {
+          color: gold;
+        }
+
+        .enroll {
+          & {
+            color: var(--primary1);
+            transition: all 0.3s ease-out;
+            border: none;
+            background: none;
+          }
+
+          &:hover {
+            color: var(--basic-fon);
+          }
+        }
+
+        .room-btn {
+          & {
+            border: none;
+            background: none;
+            color: var(--basic-fon);
+            transition: all 0.2s ease-out;
+          }
+
+          &:hover {
+            color: var(--primary1);
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 420px) {
+      .image-container {
+        .download-image {
+          width: 98%;
+        }
+      }
+    }
+  }
+}

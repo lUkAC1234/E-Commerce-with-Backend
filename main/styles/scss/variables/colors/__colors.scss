@@ -1,0 +1,19 @@
+// all colors will be placed in this following file
+// variables that are declared in sass/scss form should not be used in styles
+// they should be converted to css :root selector
+
+$primary1: #CDA274;
+$primary2: #292F36;
+$primary3: #F4F0EC;
+$primary4: #F1F6F9;
+$basic-white: #ffffff;
+$basic-font: #4D5053;
+
+:root {
+    --primary1: #{$primary1};
+    --primary2: #{$primary2};
+    --primary3: #{$primary3};
+    --primary4: #{$primary4};
+    --basic-white: #{$basic-white};
+    --basic-font: #{$basic-font};
+}
